@@ -1,0 +1,14 @@
+datasources:
+- name: 'Prometheus'
+  access: 'direct'
+  editable: true
+  is_default: true
+  name: 'Prometheus'
+  org_id: 1
+  type: 'prometheus'
+  url: 'http://127.0.0.1:9090'
+- name: 'Loki'
+  type: loki
+  url: 'http://loki:3100'
+  jsonData:
+  maxLines: 1000

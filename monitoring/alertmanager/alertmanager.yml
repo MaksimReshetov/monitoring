@@ -1,0 +1,22 @@
+global:
+ smtp_from: ${SMTP_USER}
+ smtp_smarthost: smtp.google.com:587
+ smtp_auth_username: "${SMTP_USER_FROM}"
+ smtp_auth_password: "${SMTP_PASS}"
+
+route:
+ receiver: email
+ repeat_interval: 3h 
+ group_by: [alertname]
+
+ routes:
+   - match:
+      severity: critical
+     continue: true
+     receiver: 'email'
+
+ - name: 'email'
+   email_configs:
+   - to: ${SMTP_USER_TO}
+     send_resolved: true
+
